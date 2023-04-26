@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  botcore:
+    platform: linux/x86_64
+    env_file:
+      - app.env
+    build:
+      context: .
+      dockerfile: ./core.dockerfile
+    restart: always
+    ports:
+      - "8000:80"
+    deploy:
+      mode: replicated
+      replicas: 1
